@@ -11,22 +11,24 @@ namespace Miller_CurrencyExchange
             string received_amount = null;
             decimal amount = 0;
 
-            ExchangeMonitor em = new ExchangeMonitor();
+            ExchangeMonitor em = new ExchangeMonitor(); // Will keep track of required metrics
 
+            // Get starting currency to see if we should even proceed:
             Console.WriteLine("Enter starting currency (c to cancel):");
             start_c = Console.ReadLine();
 
-            while (start_c != "c")
+            while (start_c != "c") // While user input is not 'c'
             {
                 Console.WriteLine("Enter a currency to convert to:");
-                end_c = Console.ReadLine();
+                end_c = Console.ReadLine(); // Get output preference
 
                 Console.WriteLine("Enter amount of currency to convert");
-                received_amount = Console.ReadLine();
+                received_amount = Console.ReadLine(); // Get amount to convert
 
-                amount = Decimal.Parse(received_amount);
+                amount = Decimal.Parse(received_amount); // Convert string to decimal
 
                 try {
+                    // Depending on start_currency, make appropriate conversions:
                     switch (start_c)
                     {
                         case "usd":
@@ -45,6 +47,7 @@ namespace Miller_CurrencyExchange
                             Console.WriteLine("Your resulting quantity is " + Exchanger.EUR_convert(amount, end_c) + " " + end_c);
                             em.update_total_money(amount * (decimal) 1.19648);
                             break;
+                        // If not valid, break and restart process:
                         default:
                             Console.WriteLine("Bad starting currency. Starting over...");
                             break;

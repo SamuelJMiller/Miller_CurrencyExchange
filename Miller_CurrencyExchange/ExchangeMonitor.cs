@@ -13,6 +13,7 @@ namespace Miller_CurrencyExchange
 
         public ExchangeMonitor()
         {
+            // Set to 0 initially
             total_exchanges = 0;
             total_money_converted_usd = 0;
         }
