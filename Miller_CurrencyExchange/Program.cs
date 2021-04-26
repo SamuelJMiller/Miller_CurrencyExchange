@@ -14,7 +14,7 @@ namespace Miller_CurrencyExchange
             ExchangeMonitor em = new ExchangeMonitor(); // Will keep track of required metrics
 
             // Get starting currency to see if we should even proceed:
-            Console.WriteLine("Enter starting currency (c to cancel):");
+            Console.WriteLine("Enter starting currency (usd, gbp, can, eur, or c to cancel):");
             start_c = Console.ReadLine();
 
             while (start_c != "c") // While user input is not 'c'
@@ -60,7 +60,7 @@ namespace Miller_CurrencyExchange
                 Console.WriteLine();
                 em.increment_total_exchanges(); // Add at the end of exchange
 
-                Console.WriteLine("Enter next starting currency (c to cancel):");
+                Console.WriteLine("Enter next starting currency (usd, gbp, can, eur, or c to cancel):");
                 start_c = Console.ReadLine(); // Read new currency, if user decides to
             }
 
